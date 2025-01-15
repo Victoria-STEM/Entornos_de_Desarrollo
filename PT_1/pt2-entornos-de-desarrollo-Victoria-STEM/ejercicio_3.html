@@ -1,0 +1,36 @@
+<script>
+
+    let cinco = 5 // Ajustado el nombre de la variable.
+    let diez = 10 // Ajustado el nombre de la variable.
+    let hola = "Hola" // Ajustado el nombre de la variable.
+
+    function imprimirHola() { // Ajustado el nombre de la función.
+        for (let i = 0; i < diez; i++) {
+            if (cinco == 5) {
+                console.log(hola)
+            } 
+
+            // Esta parte del código no tiene ningún sentido ni tampoco efecto, por eso la he dejado comentada:
+            // else if (cinco > diez) {
+            //     cinco++
+            // } 
+            // else {
+            //     cinco = cinco - 1
+            // }
+        }
+    }
+
+    imprimirHola()
+
+    let global = "global" // Ajustado el nombre de la variable.
+
+    function cambiaglobal() {
+        global = "cambiada"
+    }
+
+    cambiaglobal()
+    console.log(global)
+
+    // Eliminados todos los ; porque en js son innecesarios.
+
+</script>

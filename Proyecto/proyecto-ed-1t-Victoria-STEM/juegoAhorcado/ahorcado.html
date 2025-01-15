@@ -1,0 +1,82 @@
+<script>
+    // RAMA TEST:
+
+    // Declaracion de variables y la palabra aleatoria:
+    const palabras = ["flujo", "gitHub", "entorno", "desarrollo", "diagrama", "version", "repositorio", "clases", "casos", "ahorcado"]
+    let vidas = 7
+    let letrasErroneas = ""
+    const lineaPorLetra = []
+    let palabraAleatoriaNumero = Math.floor(Math.random() * 10)
+    let palabraAleatoria = palabras[palabraAleatoriaNumero]
+    let menu = ""
+
+    // Dibujo el ahorcado:
+    const dibujoAhorcado = [
+        "   T \n",
+        "   T \n   O \n",
+        "   T \n   O \n   I \n",
+        "   T \n   O \n   I \n  / \n",
+        "   T \n   O \n   I \n  /I \n",
+        "   T \n   O \n   I \n  /I\\ \n",
+        "   T \n   O \n   I \n  /I\\ \n  / \n",
+        "   T \n   O \n   I \n  /I\\ \n  / \\ \n"
+    ]
+
+    // El juego tiene una salida:
+    console.log("Introduce 'x' para cerrar el juego.")
+    console.log("******************************************************")
+
+
+    // Imprimo las lineas por palabra, las vidas y el ahorcado:
+    for (let i = 0; i < palabraAleatoria.length; i++) {
+        lineaPorLetra.push(" _ ")
+    } 
+    console.log("Palabra a adivinar: \n" + lineaPorLetra)
+    console.log("Vidas: " + vidas + "/7")
+    console.log("Dibujo del ahorcado: \n" + dibujoAhorcado[0])
+    console.log("******************************************************")
+
+    // Comienzo el buble del juego (he incluido la salida "x"):
+    while (vidas > 0 && menu != "x" && lineaPorLetra.includes(" _ ")) {
+
+        // Menu del juego y letra a buscar en el bucle:
+        menu = prompt("Bienvenido al ahorcado. \n" +
+            "Introduce letras para adivinar la palabra oculta. \n" +
+            "Pero cuidado, tienes " + vidas + " vidas. \n" +
+            "Introduce una letra:")
+
+        // Buscamos si la letra está en la palabra:
+        let encontrada = false
+        for (let i = 0; i < palabraAleatoria.length; i++) {
+            if (menu == palabraAleatoria[i]) {
+                lineaPorLetra[i] = palabraAleatoria[i]
+                encontrada = true
+            }
+        }
+
+        // Si la letra no está, restamos una vida y guardamos la letra incorrecta:
+        if (!encontrada) {
+            vidas--
+            letrasErroneas += menu + " "
+        }
+
+        // Muestra el estado del jugador al final de la ronda:
+        console.log("Palabra a adivinar: \n" + lineaPorLetra)
+        console.log("Vidas: \n" + vidas + "/7")
+        console.log("Letras incorrectas: " + letrasErroneas)
+        console.log("Dibujo del ahorcado:\n" + dibujoAhorcado[7 - vidas])
+        console.log("******************************************************")
+
+    }
+
+    // Verificación del resultado final
+    if (vidas == 0 && lineaPorLetra.includes("_")) {
+        console.log("Vaya... Has perdido :(")
+        console.log("La palabra era: " + palabraAleatoria)
+    }
+
+    if (!lineaPorLetra.includes("_")){
+        console.log("¡Felicidades! Has adivinado la palabra: " + palabraAleatoria)
+    }
+
+</script>
